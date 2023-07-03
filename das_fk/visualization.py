@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 # plot the DAS data
 def show_data(data, das_time, pclip=99.5):
@@ -93,6 +94,7 @@ def plot_fk(data, frequency, wavenumber, norm='log'):
         raise ValueError("Both frequency and wavenumber should be floats or arrays")
     extent = [min_wavenumber, max_wavenumber, min_frequency, max_frequency]
     fig, ax = plt.subplots(figsize=(12,4))
+    # rocket colormap
     plt.imshow(data, cmap='rocket',aspect = max_wavenumber/max_frequency,
             extent=extent, interpolation='none', norm = norm)
     plt.colorbar()
