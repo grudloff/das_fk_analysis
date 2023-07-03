@@ -102,9 +102,9 @@ def vfk_crop_sum(data: np.array, v: Tuple[float, ...], f: Tuple[float, ...],
     max_f = ((2*nF-1)/2)/(dt*2*nF)
     max_k = ((nK-1)/2)/(dl*nK)
     if not (0 <= f[0] <= f[1] <= max_f):
-        warnings.warn(f"Invalid frequency range. Valid range: (0, {max_f})")
+        warnings.warn(f"\nInvalid frequency range. Valid range: (0, {max_f})\n")
     if not (0 <= k[0] <= k[1] <= max_k):
-        warnings.warn(f"Invalid wavenumber range. Valid range: (0, {max_k})")
+        warnings.warn(f"\nInvalid wavenumber range. Valid range: (0, {max_k})\n")
     if data.shape[-1] % 2 == 0:
         raise ValueError("The wavenumber length should be odd.")
 

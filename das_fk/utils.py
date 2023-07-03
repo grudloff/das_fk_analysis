@@ -1,6 +1,7 @@
 import numpy as np
 import gzip
 from scipy.interpolate import interp1d
+import struct
 
 # Function to load the DAS data
 def read_PASSCAL_segy(infile, nTraces=1250, nSample=900000, TraceOff=0):
@@ -51,8 +52,6 @@ def downsample_das(data, das_time, fd=100):
     data = downsample_f(das_time_downsampled)
     return data, das_time_downsampled
 
-import numpy as np
-
 def _non_overlapping_sliding_window_view(arr, window_shape):
     """
     Create a non-overlapping sliding window view of a multidimensional array.
@@ -82,7 +81,7 @@ def _non_overlapping_sliding_window_view(arr, window_shape):
     return output
 
 def split_time_spatial(data, dT, dL, dt, dl):
-    # This returns a sliding window view of the data (no realocation).
+    # This returns a sliding window view of the data (no reallocation).
     # TODO: This may be efficient in memory but slow, should check alternatives
     nT = int(dT/dt)
     nL = int(dL/dl)
